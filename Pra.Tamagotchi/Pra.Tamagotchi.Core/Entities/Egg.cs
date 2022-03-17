@@ -1,6 +1,7 @@
 ﻿using System;
 using Pra.Tamagotchi.Core.Interfaces;
 using Pra.Tamagotchi.Core.Enums;
+using System.Text;
 
 namespace Pra.Tamagotchi.Core.Entities
 {
@@ -8,7 +9,7 @@ namespace Pra.Tamagotchi.Core.Entities
     {
         public Egg() : base()
         {
-
+            
         }
         public override void Grow()
         {
@@ -17,25 +18,29 @@ namespace Pra.Tamagotchi.Core.Entities
 
         public Chick Hatch()
         {
-            Chick chick = new Chick(Status);
+            //Chick chick = new Chick(Status);
+            TamagotchiStatus chickStatus;
             if (Size < 3)
             {
                 throw new InvalidOperationException("Ei is niet groot genoeg om uit te broeden");
             }
             else if( Size >= 3 && Size < 6)
             {
-                Status = random.Next(2) == 0 ? TamagotchiStatus.Healthy : TamagotchiStatus.Sick;
+                chickStatus = random.Next(2) == 0 ? TamagotchiStatus.Healthy : TamagotchiStatus.Sick;
             }
             else
             {
-                Status = TamagotchiStatus.Healthy;
+                chickStatus = TamagotchiStatus.Healthy;
             }
-            return chick ;
+            return new Chick(chickStatus);
         }
 
         public override string ToString()
         {
-            return $"Ei {Size:*}";
+            StringBuilder size = new StringBuilder();
+            size.Append('*', Size);
+            return $"Ei" + size.ToString();
+           
         }
     }
 }

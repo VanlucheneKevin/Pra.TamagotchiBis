@@ -11,18 +11,17 @@ namespace Pra.Tamagotchi.Core.Services
         public TamagotchiCollection()
         {
             Tamagotchis = new List<ITamagotchi>();
-            for (int i = 0; i < 3; i++)
-            {
-
-            Tamagotchis.Add(new Egg());
-            }
+            AddEggs(1);
         }
 
-        public void AddEggs()
+        public void AddEggs(int amount)
         {
-           
+            for (int i = 0; i < amount; i++)
+            {
                 Egg newEgg = new Egg();
                 Tamagotchis.Add(newEgg);
+
+            } 
             
         }
 

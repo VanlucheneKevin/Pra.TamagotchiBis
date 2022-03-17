@@ -9,7 +9,7 @@ namespace Pra.Tamagotchi.Core.Entities
         private int amountOfFood = 0;
         public Chick(TamagotchiStatus status) : base()
         {
-            Status = status;
+            //Status = status;
         }
         public void Feed()
         {

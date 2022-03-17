@@ -31,52 +31,51 @@ namespace Pra.Tamagotchi.Wpf
         {
             if(lstTamagotchis.SelectedItem != null)
             {
-                foreach (ITamagotchi tamagotchi in tamagotchiCollection.Tamagotchis)
-                {
+                
                     ITamagotchi currentTamagotchi = (ITamagotchi)lstTamagotchis.SelectedItem;
-                    if (tamagotchi is IHatchable)
+                    if (currentTamagotchi is IHatchable)
                     {
                         currentTamagotchi.Grow();
                         UpdateListBox();
                     }
-                    if (tamagotchi is IFeedable)
+                    if (currentTamagotchi is IFeedable)
                     {
                         currentTamagotchi.Grow();
                         UpdateListBox();
                     }
 
-                }
+                
 
             }
         }
 
         private void btnAddEgg_Click(object sender, RoutedEventArgs e)
         {
-            tamagotchiCollection.AddEggs();
+            tamagotchiCollection.AddEggs(1);
             UpdateListBox();
         }
 
         private void btnHatch_Click(object sender, RoutedEventArgs e)
         {
-            if (lstTamagotchis.SelectedItem != null)
-            {
-                IHatchable currentEgg = (IHatchable)lstTamagotchis.SelectedItem;
-                if(currentEgg is Egg)
-                {
-                    try
-                    {
-                        TamagotchiCollection.Hatch(currentEgg);
-                        UpdateListBox();
+        //    if (lstTamagotchis.SelectedItem != null)
+        //    {
+        //        IHatchable currentEgg = (IHatchable)lstTamagotchis.SelectedItem;
+        //        if(currentEgg is Egg)
+        //        {
+        //            try
+        //            {
+        //                TamagotchiCollection.Hatch(currentEgg);
+        //                UpdateListBox();
 
-                    }
-                    catch (Exception ex)
-                    {
+        //            }
+        //            catch (Exception ex)
+        //            {
 
-                        MessageBox.Show(ex.Message);
-                    }
+        //                MessageBox.Show(ex.Message);
+        //            }
 
-                }
-            }
+        //        }
+        //    }
         }
     }
 }
