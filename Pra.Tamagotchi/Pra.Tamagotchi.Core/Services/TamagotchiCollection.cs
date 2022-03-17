@@ -11,7 +11,7 @@ namespace Pra.Tamagotchi.Core.Services
         public TamagotchiCollection()
         {
             Tamagotchis = new List<ITamagotchi>();
-            AddEggs(1);
+            AddEggs(3);
         }
 
         public void AddEggs(int amount)
@@ -28,10 +28,10 @@ namespace Pra.Tamagotchi.Core.Services
         public void Hatch(Egg egg)
         {
             
-            for (int i = 0; i < Tamagotchis.Count; i++)
+            for (int i = Tamagotchis.IndexOf(egg); i < Tamagotchis.Count; i++)
             {
                 Tamagotchis.RemoveAt(i);
-                Tamagotchis.Insert(i, egg.Hatch());
+                Tamagotchis[i] = egg.Hatch();
             }
         }
     }

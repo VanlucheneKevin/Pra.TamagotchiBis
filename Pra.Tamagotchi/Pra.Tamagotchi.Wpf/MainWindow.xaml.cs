@@ -42,10 +42,11 @@ namespace Pra.Tamagotchi.Wpf
                     {
                         currentTamagotchi.Grow();
                         UpdateListBox();
-                    }
-
-                
-
+                    }             
+            }
+            else
+            {
+                MessageBox.Show("Gelieve een ei te selecteren", "Fout", MessageBoxButton.OK ,MessageBoxImage.Error);
             }
         }
 

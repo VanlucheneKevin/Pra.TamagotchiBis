@@ -39,7 +39,7 @@ namespace Pra.Tamagotchi.Core.Entities
         {
             StringBuilder size = new StringBuilder();
             size.Append('*', Size);
-            return $"Ei" + size.ToString();
+            return $"Ei " + size.ToString();
            
         }
     }

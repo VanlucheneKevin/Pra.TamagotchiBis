@@ -41,7 +41,7 @@ namespace Pra.Tamagotchi.Core.Entities
         }
 
 
-        public TamagotchiStatus Status { get; private set; } = TamagotchiStatus.Healthy;
+        public TamagotchiStatus Status { get; protected set; } = TamagotchiStatus.Healthy;
 
         public Tamagotchi() 
         {

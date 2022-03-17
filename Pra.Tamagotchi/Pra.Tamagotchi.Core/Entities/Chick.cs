@@ -9,18 +9,13 @@ namespace Pra.Tamagotchi.Core.Entities
         private int amountOfFood = 0;
         public Chick(TamagotchiStatus status) : base()
         {
-            //Status = status;
+            Status = status;
         }
         public void Feed()
         {
-           if (amountOfFood == 0)
-            {
-                throw new InvalidOperationException("Je tamagotchi is overleden, kan geen acties meer uitvoeren");
-            }
-            else
-            {
+          
             amountOfFood++;
-            }
+            
         }
 
         public override void Grow()
