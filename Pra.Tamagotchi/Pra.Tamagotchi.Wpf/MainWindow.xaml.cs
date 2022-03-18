@@ -16,9 +16,10 @@ namespace Pra.Tamagotchi.Wpf
         {
             InitializeComponent();
             tamagotchiCollection = new TamagotchiCollection();
+            btnFeed.IsEnabled = false;
             UpdateListBox();
 
-            
+
         }
 
         private void UpdateListBox()
@@ -29,24 +30,24 @@ namespace Pra.Tamagotchi.Wpf
 
         private void btnGrow_Click(object sender, RoutedEventArgs e)
         {
-            if(lstTamagotchis.SelectedItem != null)
+            if (lstTamagotchis.SelectedItem != null)
             {
-                
-                    ITamagotchi currentTamagotchi = (ITamagotchi)lstTamagotchis.SelectedItem;
-                    if (currentTamagotchi is IHatchable)
-                    {
-                        currentTamagotchi.Grow();
-                        UpdateListBox();
-                    }
-                    if (currentTamagotchi is IFeedable)
-                    {
-                        currentTamagotchi.Grow();
-                        UpdateListBox();
-                    }             
+
+                ITamagotchi currentTamagotchi = (ITamagotchi)lstTamagotchis.SelectedItem;
+                if (currentTamagotchi is IHatchable)
+                {
+                    currentTamagotchi.Grow();
+                    UpdateListBox();
+                }
+                if (currentTamagotchi is IFeedable)
+                {
+                    currentTamagotchi.Grow();
+                    UpdateListBox();
+                }
             }
             else
             {
-                MessageBox.Show("Gelieve een ei te selecteren", "Fout", MessageBoxButton.OK ,MessageBoxImage.Error);
+                MessageBox.Show(SelectEggMessage(), "Fout", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -58,25 +59,49 @@ namespace Pra.Tamagotchi.Wpf
 
         private void btnHatch_Click(object sender, RoutedEventArgs e)
         {
-        //    if (lstTamagotchis.SelectedItem != null)
-        //    {
-        //        IHatchable currentEgg = (IHatchable)lstTamagotchis.SelectedItem;
-        //        if(currentEgg is Egg)
-        //        {
-        //            try
-        //            {
-        //                TamagotchiCollection.Hatch(currentEgg);
-        //                UpdateListBox();
+            if (lstTamagotchis.SelectedItem != null)
+            {
+                if (lstTamagotchis.SelectedItem != null)
+                {
+                    ITamagotchi currentTamagotchi = (ITamagotchi)lstTamagotchis.SelectedItem;
 
-        //            }
-        //            catch (Exception ex)
-        //            {
+                    if (currentTamagotchi is Egg currentEgg)
+                    {
+                        try
+                        {
 
-        //                MessageBox.Show(ex.Message);
-        //            }
+                            tamagotchiCollection.Hatch(currentEgg);
+                            UpdateListBox();
 
-        //        }
-        //    }
+                        }
+                        catch (Exception ex)
+                        {
+
+                            MessageBox.Show(ex.Message);
+
+
+                        }
+
+                    }
+                    else
+                    {
+                        btnHatch.IsEnabled = false;
+                    }
+
+
+                }
+                else
+                {
+                    MessageBox.Show(SelectEggMessage(), "Fout", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+        }
+
+        private string SelectEggMessage()
+        {
+            string message = $"Gelieve een ei te selecteren";
+            return message;
         }
     }
 }
+

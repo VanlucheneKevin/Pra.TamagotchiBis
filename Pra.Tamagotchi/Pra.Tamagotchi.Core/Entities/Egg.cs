@@ -18,7 +18,7 @@ namespace Pra.Tamagotchi.Core.Entities
 
         public Chick Hatch()
         {
-            //Chick chick = new Chick(Status);
+            //Chick chick = new Chick(Status) = fout (Chick moet hier nog niet aangemaakt worden);
             TamagotchiStatus chickStatus;
             if (Size < 3)
             {

@@ -27,12 +27,9 @@ namespace Pra.Tamagotchi.Core.Services
 
         public void Hatch(Egg egg)
         {
-            
-            for (int i = Tamagotchis.IndexOf(egg); i < Tamagotchis.Count; i++)
-            {
-                Tamagotchis.RemoveAt(i);
-                Tamagotchis[i] = egg.Hatch();
-            }
+            int i = Tamagotchis.IndexOf(egg);
+            Chick newChick = egg.Hatch();
+            Tamagotchis[i] = newChick;
         }
     }
 }
