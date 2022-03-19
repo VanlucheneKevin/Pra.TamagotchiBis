@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Tamagotchi" Height="450" Width="498">
     <Grid>
-        <ListBox x:Name="lstTamagotchis" Margin="10,10,120,10" HorizontalAlignment="Stretch">
+        <ListBox x:Name="lstTamagotchis" Margin="10,10,120,10" HorizontalAlignment="Stretch" SelectionChanged="LstTamagotchis_SelectionChanged">
             <ListBox.Resources>
                 <Style TargetType="ListBoxItem">
                     <Style.Triggers>

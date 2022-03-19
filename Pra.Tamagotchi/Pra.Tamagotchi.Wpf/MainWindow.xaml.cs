@@ -16,7 +16,7 @@ namespace Pra.Tamagotchi.Wpf
         {
             InitializeComponent();
             tamagotchiCollection = new TamagotchiCollection();
-            btnFeed.IsEnabled = false;
+            CreateSettingsButtons();
             UpdateListBox();
 
 
@@ -24,6 +24,7 @@ namespace Pra.Tamagotchi.Wpf
 
         private void UpdateListBox()
         {
+           // CreateSettingsButtons();
             lstTamagotchis.ItemsSource = tamagotchiCollection.Tamagotchis;
             lstTamagotchis.Items.Refresh();
         }
@@ -32,15 +33,17 @@ namespace Pra.Tamagotchi.Wpf
         {
             if (lstTamagotchis.SelectedItem != null)
             {
-
+                
                 ITamagotchi currentTamagotchi = (ITamagotchi)lstTamagotchis.SelectedItem;
                 if (currentTamagotchi is IHatchable)
                 {
+                    
                     currentTamagotchi.Grow();
                     UpdateListBox();
                 }
                 if (currentTamagotchi is IFeedable)
                 {
+                    
                     currentTamagotchi.Grow();
                     UpdateListBox();
                 }
@@ -83,10 +86,10 @@ namespace Pra.Tamagotchi.Wpf
                         }
 
                     }
-                    else
-                    {
-                        btnHatch.IsEnabled = false;
-                    }
+                    //else
+                    //{
+                    //    btnHatch.IsEnabled = false;
+                    //}
 
 
                 }
@@ -97,11 +100,44 @@ namespace Pra.Tamagotchi.Wpf
             }
         }
 
+        private void LstTamagotchis_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            CreateSettingsButtons();
+        }
+
         private string SelectEggMessage()
         {
             string message = $"Gelieve een ei te selecteren";
             return message;
         }
+
+        private void CreateSettingsButtons()
+        {
+            if(lstTamagotchis.SelectedItem == null)
+            {
+                btnFeed.IsEnabled = false;
+                btnGrow.IsEnabled = false;
+                btnHatch.IsEnabled = false;
+                btnAddEgg.IsEnabled = true;
+            }
+            else
+            {
+                ITamagotchi currentTamagotchi = (ITamagotchi)lstTamagotchis.SelectedItem;
+                if(currentTamagotchi is IHatchable)
+                {
+                    btnGrow.IsEnabled = true;
+                    btnHatch.IsEnabled = true;
+                    btnFeed.IsEnabled = false;
+                }
+                if(currentTamagotchi is IFeedable)
+                {
+                    btnFeed.IsEnabled = true;
+                    btnGrow.IsEnabled = true;
+                    btnHatch.IsEnabled = false;
+                }
+            }
+        }
+
     }
 }
 

@@ -13,20 +13,29 @@ namespace Pra.Tamagotchi.Core.Entities
         }
         public void Feed()
         {
-          
+            if (Status == TamagotchiStatus.Died)
+            {
+                throw new InvalidOperationException(CreateDeadTamagotchiMessage());
+            }
             amountOfFood++;
             
         }
 
         public override void Grow()
         {
-            if (Status == TamagotchiStatus.Died || amountOfFood == 0)
+            if (amountOfFood <= 0)
             {
-                throw new InvalidOperationException("Je tamagotchi is overleden, kan geen acties meer uitvoeren");
+                throw new InvalidOperationException($"Je tamagotchi heeft eten nodig om te kunnen groeien");
+            }
+            
+            if (Status == TamagotchiStatus.Died)
+            {
+                throw new InvalidOperationException(CreateDeadTamagotchiMessage());
             }
             else if (Status == TamagotchiStatus.Sick)
             {
                 Health -= 50;
+                
             }
             else if (Status == TamagotchiStatus.Healthy)
             {
@@ -34,6 +43,12 @@ namespace Pra.Tamagotchi.Core.Entities
                 amountOfFood--;
             }
 
+        }
+
+        private string CreateDeadTamagotchiMessage()
+        {
+            string message = $"Je tamagotchi is overleden, je kan geen acties meer uitvoeren";
+            return message;
         }
 
         public override string ToString()
