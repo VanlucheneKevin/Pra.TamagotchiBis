@@ -9,7 +9,7 @@ namespace Pra.Tamagotchi.Core.Entities
     {
         public Egg() : base()
         {
-            
+
         }
         public override void Grow()
         {
@@ -24,7 +24,7 @@ namespace Pra.Tamagotchi.Core.Entities
             {
                 throw new InvalidOperationException("Ei is niet groot genoeg om uit te broeden");
             }
-            else if( Size >= 3 && Size < 6)
+            else if (Size >= 3 && Size < 6)
             {
                 chickStatus = random.Next(2) == 0 ? TamagotchiStatus.Healthy : TamagotchiStatus.Sick;
             }
@@ -40,7 +40,6 @@ namespace Pra.Tamagotchi.Core.Entities
             StringBuilder size = new StringBuilder();
             size.Append('*', Size);
             return $"Ei " + size.ToString();
-           
         }
     }
 }

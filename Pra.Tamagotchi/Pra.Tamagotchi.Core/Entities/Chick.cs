@@ -18,7 +18,6 @@ namespace Pra.Tamagotchi.Core.Entities
                 throw new InvalidOperationException(CreateDeadTamagotchiMessage());
             }
             amountOfFood++;
-            
         }
 
         public override void Grow()
@@ -27,7 +26,7 @@ namespace Pra.Tamagotchi.Core.Entities
             {
                 throw new InvalidOperationException($"Je tamagotchi heeft eten nodig om te kunnen groeien");
             }
-            
+
             if (Status == TamagotchiStatus.Died)
             {
                 throw new InvalidOperationException(CreateDeadTamagotchiMessage());
@@ -35,14 +34,12 @@ namespace Pra.Tamagotchi.Core.Entities
             else if (Status == TamagotchiStatus.Sick)
             {
                 Health -= 50;
-                
             }
             else if (Status == TamagotchiStatus.Healthy)
             {
                 Size++;
                 amountOfFood--;
             }
-
         }
 
         private string CreateDeadTamagotchiMessage()

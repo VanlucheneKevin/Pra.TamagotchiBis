@@ -19,13 +19,10 @@ namespace Pra.Tamagotchi.Wpf
             lstTamagotchis.SelectedIndex = 0;
             CreateSettingsButtons();
             UpdateListBox();
-
-
         }
 
         private void UpdateListBox()
         {
-           // CreateSettingsButtons();
             lstTamagotchis.ItemsSource = tamagotchiCollection.Tamagotchis;
             lstTamagotchis.Items.Refresh();
         }
@@ -34,11 +31,11 @@ namespace Pra.Tamagotchi.Wpf
         {
             if (lstTamagotchis.SelectedItem != null)
             {
-                
+
                 ITamagotchi currentTamagotchi = (ITamagotchi)lstTamagotchis.SelectedItem;
                 if (currentTamagotchi is IHatchable)
                 {
-                    
+
                     currentTamagotchi.Grow();
                     UpdateListBox();
                 }
@@ -46,11 +43,11 @@ namespace Pra.Tamagotchi.Wpf
                 {
                     try
                     {
-                    currentTamagotchi.Grow();
-                    UpdateListBox();
+                        currentTamagotchi.Grow();
+                        UpdateListBox();
 
                     }
-                    catch(InvalidOperationException ex)
+                    catch (InvalidOperationException ex)
                     {
                         MessageBox.Show(ex.Message, "groeien mislukt!", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
@@ -69,51 +66,42 @@ namespace Pra.Tamagotchi.Wpf
         }
         private void BtnFeed_Click(object sender, RoutedEventArgs e)
         {
-            if(lstTamagotchis.SelectedItem != null)
+            if (lstTamagotchis.SelectedItem != null)
             {
                 ITamagotchi currentTamagotchi = (ITamagotchi)lstTamagotchis.SelectedItem;
-                if(currentTamagotchi is Chick currentChicken)
+                if (currentTamagotchi is Chick currentChicken)
                 {
                     try
                     {
                         currentChicken.Feed();
                         UpdateListBox();
                     }
-                    catch(InvalidOperationException ex)
+                    catch (InvalidOperationException ex)
                     {
                         MessageBox.Show(ex.Message, "voeden mislukt", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                 }
             }
-           
-
         }
 
         private void BtnHatch_Click(object sender, RoutedEventArgs e)
         {
             if (lstTamagotchis.SelectedItem != null)
             {
-               ITamagotchi currentTamagotchi = (ITamagotchi)lstTamagotchis.SelectedItem;
+                ITamagotchi currentTamagotchi = (ITamagotchi)lstTamagotchis.SelectedItem;
 
-                    if (currentTamagotchi is Egg currentEgg)
+                if (currentTamagotchi is Egg currentEgg)
+                {
+                    try
                     {
-                        try
-                        {
-
-                            tamagotchiCollection.Hatch(currentEgg);
-                            UpdateListBox();
-
-                        }
-                        catch (InvalidOperationException ex)
-                        {
-
-                            MessageBox.Show(ex.Message, "Broeden mislukt", MessageBoxButton.OK, MessageBoxImage.Error);
-
-
-                        }
-
+                        tamagotchiCollection.Hatch(currentEgg);
+                        UpdateListBox();
                     }
-                    
+                    catch (InvalidOperationException ex)
+                    {
+                        MessageBox.Show(ex.Message, "Broeden mislukt", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
                 else
                 {
                     MessageBox.Show(SelectEggMessage(), "Broeden mislukt", MessageBoxButton.OK, MessageBoxImage.Error);

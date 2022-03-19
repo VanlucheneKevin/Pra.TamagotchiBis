@@ -46,11 +46,9 @@ namespace Pra.Tamagotchi.Core.Entities
         public Tamagotchi() 
         {
             Health = 100;
-            Size = 1;
-            
+            Size = 1;            
         }
 
-        public abstract void Grow();
-       
+        public abstract void Grow();       
     }
 }

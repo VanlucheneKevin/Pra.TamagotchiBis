@@ -20,9 +20,7 @@ namespace Pra.Tamagotchi.Core.Services
             {
                 Egg newEgg = new Egg();
                 Tamagotchis.Add(newEgg);
-
-            } 
-            
+            }
         }
 
         public void Hatch(Egg egg)
