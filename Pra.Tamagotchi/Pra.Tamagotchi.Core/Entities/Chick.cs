@@ -23,7 +23,7 @@ namespace Pra.Tamagotchi.Core.Entities
 
         public override void Grow()
         {
-            if (amountOfFood <= 0)
+            if (amountOfFood <= 0 && Status == TamagotchiStatus.Healthy)
             {
                 throw new InvalidOperationException($"Je tamagotchi heeft eten nodig om te kunnen groeien");
             }

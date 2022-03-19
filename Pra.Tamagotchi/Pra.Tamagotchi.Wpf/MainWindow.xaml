@@ -24,8 +24,8 @@
             </ListBox.Resources>
         </ListBox>
         <Button x:Name="btnGrow" Content="Laat groeien" Margin="0,10,10,0" HorizontalAlignment="Right" VerticalAlignment="Top" Width="100" Height="30" Click="btnGrow_Click" />
-        <Button x:Name="btnHatch" Content="Broed uit" Margin="0,50,10,0" HorizontalAlignment="Right" VerticalAlignment="Top" Width="100" Height="30" Click="btnHatch_Click" />
-        <Button x:Name="btnFeed" Content="Geef eten" Margin="0,90,10,0" HorizontalAlignment="Right" VerticalAlignment="Top" Width="100" Height="30" />
-        <Button x:Name="btnAddEgg" Content="Koop ei" Margin="0,150,10,0" HorizontalAlignment="Right" VerticalAlignment="Top" Width="100" Height="30" Click="btnAddEgg_Click" />
+        <Button x:Name="btnHatch" Content="Broed uit" Margin="0,50,10,0" HorizontalAlignment="Right" VerticalAlignment="Top" Width="100" Height="30" Click="BtnHatch_Click" />
+        <Button x:Name="btnFeed" Content="Geef eten" Margin="0,90,10,0" HorizontalAlignment="Right" VerticalAlignment="Top" Width="100" Height="30" Click="BtnFeed_Click" />
+        <Button x:Name="btnAddEgg" Content="Koop ei" Margin="0,150,10,0" HorizontalAlignment="Right" VerticalAlignment="Top" Width="100" Height="30" Click="BtnAddEgg_Click" />
     </Grid>
 </Window>
